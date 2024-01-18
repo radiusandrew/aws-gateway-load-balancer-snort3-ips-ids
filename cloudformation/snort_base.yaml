@@ -3,7 +3,7 @@ Description: Pipeline Automation Template
 
 Parameters:
   GitRepo:
-    Default: https://github.com/p4lcsi/scalable-snort-gwlb-cicd.git
+    Default: hhttps://github.com/radiusandrew/aws-gateway-load-balancer-snort3-ips-ids.git
     Type: String
 
   VpcName:
@@ -91,9 +91,7 @@ Resources:
     DeletionPolicy: Retain
     Properties: 
       BucketName: !Sub 
-        - snort-cicd-${AWS::Region}-${AWS::AccountId}-${RandomizedValue}
-        - RandomizedValue:
-            Fn::Select: [0, Fn::Split: [-, Fn::Select: [2, Fn::Split: [/, !Ref AWS::StackId ]]]] # Takes the first part of the random GUID in the cloudformation stacks arn.
+        - snort-cicd-${AWS::Region}-${AWS::AccountId}
       AccessControl: Private
   
   GitRepoToCodeCommitCustomResource:
